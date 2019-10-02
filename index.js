@@ -8,6 +8,15 @@ const app = express();
 
 app.use(cors());
 
+app.get('/playerData', (req, res) => {
+  const id = req.query.id || '464';
+  axios
+    .get(`https://statdata.pgatour.com/r/${id}/leaderboard-v2mini.json`)
+    .then((response) => {
+      res.json(response.data);
+    });
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('pga-leaderboard/build'));
 
