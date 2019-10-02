@@ -1,0 +1,18 @@
+#submitButton {
+  margin: 0 5px;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #1976d2;
+}
+#submitButton:hover {
+  background-color: rgb(17, 82, 147);
+}
+#editButton {
+  margin: 0 5px;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #4acc40;
+}
+#editButton:hover {
+  background-color: rgb(17, 82, 147);
+}
