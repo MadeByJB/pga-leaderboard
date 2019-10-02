@@ -92,9 +92,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
-  let { playerRows } = props;
+  let { playerRows, setRows } = props;
+  let rows = playerRows;
   const classes = useStyles();
-  const [rows, setRows] = useState(playerRows);
+  // const [rows, setRows] = useState(playerRows);
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('score');
   const [selected, setSelected] = useState([]);

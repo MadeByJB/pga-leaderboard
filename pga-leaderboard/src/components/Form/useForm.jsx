@@ -17,6 +17,10 @@ const formConfig = [
     label: 'Country',
   },
   {
+    name: 'position',
+    label: 'Position',
+  },
+  {
     name: 'currentScore',
     label: 'Current Score',
   },

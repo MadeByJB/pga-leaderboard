@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
 import './css/App.css';
-import data from './leaderboard-data.json';
+import { generate } from 'shortid';
+import playerData from './leaderboard-data.json';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import ManagePlayersForm from './components/Form/ManagePlayersForm';
 import ErrorBoundary from './ErrorBoundary';
 
 function App() {
-  const [playerRows, setRows] = useState(data.leaderboard.players);
-  const prepareData = ({
-    firstName,
-    lastName,
-    country,
-    currentScore,
-    totalStrokes,
-  }) => {
+  const [playerRows, setRows] = useState(playerData.leaderboard.players);
+  const prepareData = (submitData) => {
+    let {
+      firstName,
+      lastName,
+      country,
+      position,
+      currentScore,
+      totalStrokes,
+    } = submitData;
+
     return {
       total: +currentScore,
       total_strokes: +totalStrokes,
-      player_id: 33,
+      current_position: +position,
+      player_id: generate(),
       player_bio: {
         first_name: firstName,
         last_name: lastName,
         country,
       },
-      current_position: null,
     };
   };
 
@@ -33,6 +37,7 @@ function App() {
         <ManagePlayersForm
           onSubmit={(data) => {
             let submitData = prepareData(data);
+            console.log(data);
             setRows((currentRows) => {
               const dataToSubmit = [
                 {
@@ -40,11 +45,12 @@ function App() {
                 },
                 ...currentRows,
               ];
+              console.log(dataToSubmit);
               return dataToSubmit;
             });
           }}
         />
-        <Leaderboard playerRows={playerRows} />
+        <Leaderboard playerRows={playerRows} setRows={setRows} />
       </div>
     </ErrorBoundary>
   );

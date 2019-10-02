@@ -8,14 +8,16 @@ const ManagePlayerForm = ({ onSubmit }) => {
     firstName: '',
     lastName: '',
     country: '',
-    currentScore: 0,
-    totalStrokes: 0,
+    position: '',
+    currentScore: '',
+    totalStrokes: '',
   };
   return (
     <Formik
       initialValues={formConfig}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         onSubmit(values);
+        resetForm();
       }}
     >
       {({ values, handleChange, handleBlur }) => {
