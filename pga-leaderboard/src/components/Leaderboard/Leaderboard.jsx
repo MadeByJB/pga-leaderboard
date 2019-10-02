@@ -18,15 +18,14 @@ const getPlayerArray = (data) => {
   return players;
 };
 
-
 function desc(a, b) {
   let order = 'total';
 
   if (b[order] < a[order]) {
-    return -1;
+    return 1;
   }
   if (b[order] > a[order]) {
-    return 1;
+    return -1;
   }
 
   if (b[order] === a[order]) {
@@ -100,7 +99,7 @@ export default function EnhancedTable(props) {
   const [orderBy, setOrderBy] = useState('score');
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
-  const [dense ] = useState(false);
+  const [dense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -163,7 +162,6 @@ export default function EnhancedTable(props) {
   };
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
-
 
   return (
     <div className={classes.root}>
